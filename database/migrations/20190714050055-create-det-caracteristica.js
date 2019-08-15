@@ -17,6 +17,16 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
+      CatacteristicaId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+
+        references: {      
+          model: 'Caracteristicas',
+          key: 'id'
+        }
+        
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

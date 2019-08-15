@@ -18,16 +18,26 @@ module.exports = {
         type: Sequelize.STRING
       },
       precio_vta: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       porcdesct: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       porc_promo: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       estado: {
         type: Sequelize.BOOLEAN
+      },
+      PedidoId: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+
+        references: {         // User belongsTo Company 1:1
+          model: 'Pedidos',
+          key: 'id'
+        }
+        
       },
       createdAt: {
         allowNull: false,

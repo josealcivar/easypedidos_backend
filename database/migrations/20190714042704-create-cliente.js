@@ -32,6 +32,17 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
+      
+      EmpresaId: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+
+        references: {         // User belongsTo Company 1:1
+          model: 'Empresas',
+          key: 'id'
+        }
+        
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
