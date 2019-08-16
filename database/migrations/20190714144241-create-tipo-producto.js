@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       descripcion: {
         type: Sequelize.STRING
@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.BIGINT,
         allowNull: false,
 
-        references: {         // User belongsTo Company 1:1
+        references: {         
           model: 'Empresas',
           key: 'id'
         }

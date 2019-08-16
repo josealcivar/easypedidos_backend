@@ -48,7 +48,7 @@ module.exports = {
         type: Sequelize.BIGINT,
         allowNull: false,
 
-        references: {         // User belongsTo Company 1:1
+        references: {         
           model: 'Empresas',
           key: 'id'
         }
@@ -68,24 +68,22 @@ module.exports = {
         type: Sequelize.BIGINT,
         allowNull: false,
 
-        references: {         // User belongsTo Company 1:1
+        references: {         
           model: 'Marcas',
           key: 'id'
         }
         
       },
       Tipo_productoId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
-
         references: {         
           model: 'Tipo_productos',
           key: 'id'
         }
-        
       },
       CaracteristicaId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
 
         references: {         

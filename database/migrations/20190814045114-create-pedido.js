@@ -46,7 +46,7 @@ module.exports = {
         
       },
       SucursalId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
 
         references: {         // User belongsTo Company 1:1
