@@ -21,10 +21,10 @@ if (config.use_env_variable) {
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Conected to Server Successfull...!!!')
+    console.log('Conected to Server Successfull...!!!');
   })
   .catch(err => {
-    console.error("damm... can't connect to server :,( ")
+    console.error("damm... can't connect to server :,( ");
   });
 
 

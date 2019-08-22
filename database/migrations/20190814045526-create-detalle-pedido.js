@@ -38,6 +38,15 @@ module.exports = {
           key: 'id'
         }
         
+      },      
+      ProductoId: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+
+        references: {         // User belongsTo Company 1:1
+          model: 'Productos',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

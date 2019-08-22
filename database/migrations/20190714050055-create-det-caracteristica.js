@@ -17,7 +17,7 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
-      CatacteristicaId: {
+      CaracteristicaId: {
         type: Sequelize.BIGINT,
         allowNull: false,
 

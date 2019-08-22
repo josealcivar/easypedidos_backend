@@ -16,6 +16,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Producto.associate = function(models) {
     // associations can be defined here
+
+    Producto.belongsTo(models.Empresa);
+    Producto.belongsTo(models.Grupo);
+    Producto.belongsTo(models.Caracteristica);
+    Producto.belongsTo(models.Tipo_producto);
+
+
   };
   return Producto;
 };

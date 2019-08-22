@@ -11,7 +11,20 @@ module.exports = (sequelize, DataTypes) => {
     estado: DataTypes.BOOLEAN
   }, {});
   Cliente.associate = function(models) {
-    // associations can be defined here
+      // associations can be defined here
+      Cliente.belongsTo(models.Empresa);
   };
+
+
+  Cliente.CrearCliente = (ll_cliente, transaction)=>{
+    return new Promise((resolve, reject)=>{
+      return Cliente.create(ll_cliente, {transaction}).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
   return Cliente;
 };

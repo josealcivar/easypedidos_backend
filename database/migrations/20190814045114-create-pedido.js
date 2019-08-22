@@ -26,6 +26,12 @@ module.exports = {
       porcdesct: {
         type: Sequelize.DECIMAL(10,2)
       },
+      otros:{
+        type: Sequelize.DECIMAL(10,2)
+      },
+      porctotros:{
+        type: Sequelize.DECIMAL(10,2)
+      },
       total: {
         type: Sequelize.DECIMAL(10,2)
       },
@@ -38,22 +44,34 @@ module.exports = {
       EmpresaId: {
         type: Sequelize.BIGINT,
         allowNull: false,
-
         references: {         // User belongsTo Company 1:1
           model: 'Empresas',
           key: 'id'
         }
-        
+      },
+      ClienteId: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+        references: {         // User belongsTo Company 1:1
+          model: 'Clientes',
+          key: 'id'
+        }
+      },
+      EmpleadoId: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+        references: {         // User belongsTo Company 1:1
+          model: 'Empleados',
+          key: 'id'
+        }
       },
       SucursalId: {
         type: Sequelize.BIGINT,
         allowNull: false,
-
         references: {         // User belongsTo Company 1:1
           model: 'Sucursals',
           key: 'id'
         }
-        
       },
       createdAt: {
         allowNull: false,
@@ -67,5 +85,6 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Pedidos');
+    
   }
 };

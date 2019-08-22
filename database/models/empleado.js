@@ -13,6 +13,18 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Empleado.associate = function(models) {
     // associations can be defined here
+    Empleado.belongsTo(models.Empresa);
   };
+
+  Empleado.CrearEmpleado = (ll_empleado, transaction)=>{
+    return new Promise((resolve, reject)=>{
+      return Empleado.create(ll_empleado, {transaction}).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
   return Empleado;
 };

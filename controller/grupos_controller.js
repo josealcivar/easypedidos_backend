@@ -4,23 +4,32 @@ const sequelize	= require('../database/models').sequelize;
 const modelo = require('../database/models');
 const status = require('../response/status');
 
-const ObtenerListadoEmpresas = async (req, res) =>{
+const ObtenerListadoGrupos = async (req, res) =>{
         
+        let grupo = " ";
+       
+        if(req.body.grupo != undefined || req.body.grupo != null){
+            grupo = req.body.grupo;
+            }
+
     try {
-       await modelo.Empresa.findAll({}).then(result=>{
-        const empresas = result.map( empresa => {
+       await modelo.Grupo.findAll({
+           where:{
+            descripcion: {
+                $like: '%'+grupo+'%'
+              }
+               
+           }
+       }).then(result=>{
+        const grupos = result.map( grupo => {
 			return Object.assign(
 				{},
 				{
-					razonsocial: 	empresa.razonsocial,
-					ruc 	   : 	empresa.ruc ,
-					email 	   : 	empresa.email,
-					direccion  : 	empresa.direccion,
-					telefono   : 	empresa.telefono,
-					estado     : 	empresa.estado
+					descripcion: 	grupo.descripcion,
+					estado     : 	grupo.estado
 				});
 		});
-            return status.okGet(res,'listado de empresas succesfull', empresas);
+            return status.okGet(res,'listado de grupos succesfull', grupos);
             
         });
     } catch (error) {
@@ -74,36 +83,9 @@ const GetSucursalPorEmpresa = async (req, res)=>{
 
 };
 
-// const GetStoreProcedureCLientes = async (req, res)=>{
-//    // sequelize.query('CALL GetAllClientes()', 
 
-//    let datosClientes={
-//     razonsocial:    req.params.razonsocial, 
-//     cedula:         req.params.cedula   
-//    };
-//    console.log("muestra la razon social");
-   
-//    console.log(datosClientes);
-//    let t = inicializarTransaccion();
-//     //sequelize.query('EXEC GetClientesParams :razonsocial, :cedula', //SQL SERVER
-//     await sequelize.query('CALL GetClientesParams(:razonsocial, :cedula)',  //MySQL
-//           {
-//             replacements: datosClientes,
-//             type: sequelize.QueryTypes.SELECT
-//         }).then(result=>{
-//             //t.commit();
-//             console.log(result);
-//             res.status(200).json(result);
-//         }).catch(err=>{
-//             //t.rolback();
-//             console.log(err);
-//             res.status(500).json(err);
-//             });
-        
 
-// }
-
-const CrearNuevaEmpresa = async (req, res)=>{
+const CrearNuevoGrupo = async (req, res)=>{
     let dataEmpresa={
         razonsocial: req.body.razonsocial,
         ruc: req.body.cedula,
@@ -142,7 +124,6 @@ function inicializarTransaccion(){
 
 // retorno de todas las funciones
 return module.exports={
-    ObtenerListadoEmpresas,
-    GetSucursalPorEmpresa,
-    CrearNuevaEmpresa
+    ObtenerListadoGrupos,
+    CrearNuevoGrupo
 };

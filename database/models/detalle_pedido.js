@@ -11,6 +11,24 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Detalle_pedido.associate = function(models) {
     // associations can be defined here
+    Detalle_pedido.belongsTo(models.Pedido);
+    Detalle_pedido.belongsTo(models.Producto);
   };
+
+        // funcion para crear la cabecera del detalle factura
+        Detalle_pedido.createDetallePedido = (ll_detallePedido, transaction) => {
+          console.log("detalle pedido");
+          console.log(ll_detallePedido);
+          return new Promise ((resolve, reject) => {
+            return Detalle_pedido.create(ll_detallePedido,{transaction}).then(detallePedido=>{
+              return resolve(detallePedido);
+              }).catch(fail=>{
+                console.log(fail);
+                return reject(fail);
+              });
+            });
+          };
+
+
   return Detalle_pedido;
 };

@@ -5,16 +5,28 @@ module.exports = {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
-
       Example:
-
       */
+
       return queryInterface.bulkInsert('Clientes', [{
         codigointerno:'ABC123',
         razonsocial: 'CENTRO COMERCIAL MALL DEL SOL',
         ruc: "0926333392001",
         email: "malldelsol@mail.com",
         direccion: "6 DE MARZO Y L. GARAICOA",
+        telefono: "2456789",
+        tipoprecio:"A",
+        estado:true,
+        EmpresaId:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        codigointerno:'ABC123',
+        razonsocial: 'SAN MARINO',
+        ruc: "0926333392001",
+        email: "malldelsol@mail.com",
+        direccion: "FCO ORELLANA",
         telefono: "2456789",
         tipoprecio:"A",
         estado:true,

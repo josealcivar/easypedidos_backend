@@ -8,8 +8,8 @@ module.exports = {
 
       Example:
       */
-      return queryInterface.bulkInsert('Empresas', [{
-           
+      return queryInterface.bulkInsert('Empresas', [
+        {
         razonsocial: 'ALMACENES ESTUARDO SANCHEZ S.A.',
         ruc: "0926333392001",
         email: "estuardo@mail.com",
@@ -18,8 +18,18 @@ module.exports = {
         estado:true,
         createdAt: new Date(),
         updatedAt: new Date()
-
-  }], {});
+  },
+  {
+    razonsocial: 'FERRETERIA ESPINOZA',
+        ruc: "0926333392001",
+        email: "estuardo@mail.com",
+        direccion: "RUMICHACA Y VELEZ",
+        telefono: "2456789",
+        estado:true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+  }
+], {});
   
   },
 

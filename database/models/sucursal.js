@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Sucursal.associate = function(models) {
     // associations can be defined here
+    Sucursal.belongsTo(models.Empresa);
   };
   return Sucursal;
 };
