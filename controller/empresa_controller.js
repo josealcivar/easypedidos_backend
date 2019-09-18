@@ -125,7 +125,6 @@ const CrearNuevaEmpresa = async (req, res)=>{
     
 };
 
-
 function inicializarTransaccion(){
 	return new Promise((resolve, reject) => {
 		sequelize.transaction(

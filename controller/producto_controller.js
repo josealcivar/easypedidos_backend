@@ -115,15 +115,19 @@ const CrearNuevoProducto = async (req, res)=>{
         porcentajepromo: req.body.porcentajepromo,
         origen: req.body.origen,
         rutaimagen: req.body.rutaimagen,
+        EmpresaId:req.body.rutaimagen,
+        GrupoId: req.body.rutaimagen,
+        CaracteristicaId:req.body.CaracteristicaId,
+        Tipo_productoId: req.body.Tipo_productoId,
         estado:true
     };
 
     let t = await inicializarTransaccion();
     try{
         let result = await modelo.Producto.CrearProducto(dataProducto, t);
-            console.log("guardo la empresa");
+            console.log("guardo la producto");
             t.commit();
-            return status.okCreate(res,'empresa created successfull', result.get('razonsocial'));
+            return status.okCreate(res,'producto created successfull', result.get('description'));
     }catch(err){
         t.rolback();
             return status.error(res,err,'existio un error al crear',false);
