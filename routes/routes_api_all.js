@@ -1,30 +1,27 @@
-var express = require('express');
+'use strict';
 
-var app = express();
-var usersRouter = require('./users');
-var indexRouter = require('./index');
 
-/**
- * @description llamando a los archivos de rutas
- */
+module.exports = function(app) {
+    //  apps.use(cors());
 var empresaRouter = require('./routes_api_empresa');
-// var clientesRouter = require('./routes_api_cliente');
-// var empleadosRouter = require('./routes_api_empleados');
-// var pedidosRouter = require('./routes_api_pedidos');
-// var productosRouter = require('./routes_api_productos');
-
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-/**
- *  @description RUTAS DEL API DE TODA LA APLICACION
- */
+var clienteRouter = require('./routes_api_cliente');
+var empleadoRouter = require('./routes_api_empleados');
+var pedidosRouter = require('./routes_api_pedidos');
+var gruposRouter = require('./routes_api_grupos');
+var productosRouter= require('./routes_api_productos');
+var marcaRouter= require('./routes_api_marca');
+var caracteristicasRouter= require('./routes_api_caracteristicas');
+var promocionesRouter= require('./routes_api_promociones');
 
 app.use('/api/empresas', empresaRouter);
-// app.use('/api/clientes', clientesRouter);
-// app.use('/api/empleados', empleadosRouter);
-// app.use('/api/pedidos', pedidosRouter);
-// app.use('/api/productos', productosRouter);
+app.use('/api/clientes', clienteRouter);
+app.use('/api/empleados', empleadoRouter);
+app.use('/api/pedidos', pedidosRouter);
+app.use('/api/grupos',gruposRouter);
+app.use('/api/productos',productosRouter);
+app.use('/api/marcas',marcaRouter);
+app.use('/api/caracteristicas', caracteristicasRouter);
+app.use('/api/promociones', promocionesRouter);
+  };
+  
 
-return module.exports = app;
