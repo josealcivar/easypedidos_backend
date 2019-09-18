@@ -4,30 +4,30 @@ const sequelize	= require('../database/models').sequelize;
 const modelo = require('../database/models');
 const status = require('../response/status');
 
-const ObtenerListadoGrupos = async (req, res) =>{
-        let grupo = " ";
-        if(req.body.grupo != undefined || req.body.grupo != null){
-            grupo = req.body.grupo;
+const ObtenerListadoMarca = async (req, res) =>{
+        let marca = " ";
+        if(req.body.marca != undefined || req.body.marca != null){
+            marca = req.body.marca;
             }
 
     try {
-       await modelo.Grupo.findAll({
+       await modelo.Marca.findAll({
            where:{
             descripcion: {
-                $like: '%'+grupo+'%'
+                $like: '%'+marca+'%'
               }
                
            }
        }).then(result=>{
-        const grupos = result.map( grupo => {
+        const marcas = result.map( marca => {
 			return Object.assign(
 				{},
 				{
-					descripcion: 	grupo.descripcion,
-					estado     : 	grupo.estado
+					descripcion: 	marca.descripcion,
+					estado     : 	marca.estado
 				});
 		});
-            return status.okGet(res,'listado de grupos succesfull', grupos);
+            return status.okGet(res,'listado de grupos succesfull', marcas);
             
         });
     } catch (error) {
@@ -38,17 +38,17 @@ const ObtenerListadoGrupos = async (req, res) =>{
 };
  
 
-const CrearNuevoGrupo = async (req, res)=>{
-    let dataGrupo={
+const CrearNuevaMarca = async (req, res)=>{
+    let dataMarca={
         descripcion: req.body.descripcion,
         estado:true
     };
     let t = await inicializarTransaccion();
     try{
-        let result = await modelo.Grupo.CrearGrupo(dataGrupo, t);
+        let result = await modelo.Marca.CrearMarca(dataMarca, t);
             console.log("guardo la grupo");
             t.commit();
-            return status.okCreate(res,'grupo created successfull', result.get('descripcion'));
+            return status.okCreate(res,'marca created successfull', result.get('descripcion'));
     }catch(err){
         t.rolback();
             return status.error(res,err,'hubo un error al crear',false);
@@ -73,6 +73,6 @@ function inicializarTransaccion(){
 
 // retorno de todas las funciones
 return module.exports={
-    ObtenerListadoGrupos,
-    CrearNuevoGrupo
+    ObtenerListadoMarca,
+    CrearNuevaMarca
 };

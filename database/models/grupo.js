@@ -6,6 +6,18 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Grupo.associate = function(models) {
     // associations can be defined here
+
+    Grupo.CrearGrupo = (ll_grupo, transaction)=>{
+    
+      return new Promise((resolve, reject)=>{
+        return Grupo.create(ll_grupo, {transaction}).then(result=>{
+          return resolve(result);
+        }).catch(fail=>{
+          return reject(fail);
+        });
+      });
+    };
+
   };
   return Grupo;
 };
