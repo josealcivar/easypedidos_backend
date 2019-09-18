@@ -24,5 +24,16 @@ module.exports = (sequelize, DataTypes) => {
 
 
   };
+
+  Producto.CrearProducto = (ll_producto, transaction)=>{
+    return new Promise((resolve, reject)=>{
+      return Producto.create(ll_producto, {transaction}).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
   return Producto;
 };

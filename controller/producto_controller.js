@@ -99,22 +99,28 @@ const GetSucursalPorEmpresa = async (req, res)=>{
 //             console.log(err);
 //             res.status(500).json(err);
 //             });
-        
 
 // }
 
-const CrearNuevaEmpresa = async (req, res)=>{
-    let dataEmpresa={
-        razonsocial: req.body.razonsocial,
-        ruc: req.body.cedula,
-        email:req.body.email,
-        telefono: req.body.telefono,
-        direccion: req.body.direccion,
+const CrearNuevoProducto = async (req, res)=>{
+    let dataProducto={
+        codigointerno: req.body.codigointerno,
+        description: req.body.description,
+        destacado:req.body.destacado,
+        stock: req.body.stock,
+        precio1: req.body.precio1,
+        precio2: req.body.precio2,
+        precio3: req.body.precio3,
+        precio4: req.body.precio4,
+        porcentajepromo: req.body.porcentajepromo,
+        origen: req.body.origen,
+        rutaimagen: req.body.rutaimagen,
         estado:true
     };
+
     let t = await inicializarTransaccion();
     try{
-        let result = await modelo.Empresa.CrearEmpresa(dataEmpresa, t);
+        let result = await modelo.Producto.CrearProducto(dataProducto, t);
             console.log("guardo la empresa");
             t.commit();
             return status.okCreate(res,'empresa created successfull', result.get('razonsocial'));
@@ -144,5 +150,5 @@ function inicializarTransaccion(){
 return module.exports={
     ObtenerListadoEmpresas,
     GetSucursalPorEmpresa,
-    CrearNuevaEmpresa
+    CrearNuevoProducto
 };
