@@ -84,7 +84,6 @@ const GetSucursalPorEmpresa = async (req, res)=>{
 };
 
 
-
 const CrearNuevoGrupo = async (req, res)=>{
     let dataEmpresa={
         razonsocial: req.body.razonsocial,
