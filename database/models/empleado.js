@@ -26,5 +26,19 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Empleado.GetUser = (ll_empleado)=>{
+    return new Promise((resolve, reject)=>{
+      return Empleado.findOne({
+        where:{
+          email:ll_empleado
+        }
+      }).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
   return Empleado;
 };

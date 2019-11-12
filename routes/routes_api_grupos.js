@@ -6,7 +6,7 @@ var controller = require('../controller/grupos_controller');
 //router.get('/listadoGrupos', controller.ObtenerListadoEmpleados);
 
 /* POST grupos. */
-router.post('/listadoGruposPorNombre', controller.ObtenerListadoGrupos);
+router.post('/listadoGrupos', controller.ObtenerListadoGrupos);
 
 /* POST creacion de grupos. */
 router.post('/CrearNuevoGrupo', controller.CrearNuevoGrupo);

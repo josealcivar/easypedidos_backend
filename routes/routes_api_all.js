@@ -11,7 +11,9 @@ var productosRouter       = require('./routes_api_productos');
 var marcaRouter           = require('./routes_api_marca');
 var caracteristicasRouter = require('./routes_api_caracteristicas');
 var promocionesRouter     = require('./routes_api_promociones');
+var loginRouter           = require('./routes_api_login');
 
+app.use('/api/users',           loginRouter);
 app.use('/api/empresas',        empresaRouter);
 app.use('/api/clientes',        clienteRouter);
 app.use('/api/empleados',       empleadoRouter);
@@ -23,5 +25,3 @@ app.use('/api/caracteristicas', caracteristicasRouter);
 app.use('/api/promociones',     promocionesRouter);
 
 };
-  
-

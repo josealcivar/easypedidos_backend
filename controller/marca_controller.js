@@ -6,9 +6,11 @@ const status = require('../response/status');
 
 const ObtenerListadoMarca = async (req, res) =>{
         let marca = " ";
-        if(req.body.marca != undefined || req.body.marca != null){
+        
+        if(req.body.marca != undefined || req.body.marca != null)
+        {
             marca = req.body.marca;
-            }
+        }
 
     try {
        await modelo.Marca.findAll({
@@ -27,7 +29,7 @@ const ObtenerListadoMarca = async (req, res) =>{
 					estado     : 	marca.estado
 				});
 		});
-            return status.okGet(res,'listado de grupos succesfull', marcas);
+            return status.okGet(res,'listado de marcas succesfull', marcas);
             
         });
     } catch (error) {

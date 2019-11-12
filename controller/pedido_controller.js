@@ -72,7 +72,6 @@ const CheckOutPedido = async (req, res)=>{
 
 
 
-
 const ListadoDePedidos = async(req, res)=>{
 
     modelo.Pedido.findAll({
