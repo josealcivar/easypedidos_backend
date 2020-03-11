@@ -13,5 +13,30 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Sucursal.belongsTo(models.Empresa);
   };
+
+
+    
+  Sucursal.CrearSucursal = (ll_grupo, transaction)=>{
+    
+    return new Promise((resolve, reject)=>{
+      return Sucursal.create(ll_grupo, {transaction}).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
+  Sucursal.EncontrarSucursal = (ll_grupo, transaction)=>{
+    
+    return new Promise((resolve, reject)=>{
+      return Sucursal.create(ll_grupo, {transaction}).then(result=>{
+        return resolve(result);
+      }).catch(fail=>{
+        return reject(fail);
+      });
+    });
+  };
+
   return Sucursal;
 };
