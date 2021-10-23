@@ -1,4 +1,4 @@
-export const loginUsers = (db, userName) => {
+const loginUsers = (db, userName) => {
     return new Promise((resolve, reject) =>
        db.collection('user')
          .find({ 'username': userName })
@@ -8,10 +8,11 @@ export const loginUsers = (db, userName) => {
             }else{
                reject();
             }
-       });
-    });
- }
- export const updateUserPassword = (db, userName,pwd) => {
+       })
+    )
+  }
+ 
+ const updateUserPassword = (db, userName,pwd) => {
    return db.collection('user').updateOne({'username': userName }, {
      $set: {password:pwd} 
    })
@@ -22,3 +23,9 @@ export const loginUsers = (db, userName) => {
      return Promise.reject(err);
    })
  }
+
+ // retorno de todas las funciones
+return module.exports={
+  loginUsers,
+  updateUserPassword
+};
